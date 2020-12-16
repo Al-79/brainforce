@@ -1,2 +1,0 @@
-class Front < ApplicationRecord
-end

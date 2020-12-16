@@ -10,6 +10,22 @@
   </head>
 
   <body>
+    <header class="header">
+      <h1 class="header__left"><a href="/">brainforce</a></h1>
+      <div class="header__middle">
+        <a class="post" href="/questions/new">新規登録</a>
+      </div>
+      <div class="header__right">
+        <a class="post" href="/tweets/new">新規登録</a>
+        <a class="post" href="/tweets/new">ログイン</a>
+        <a class="post" href="/tweets/new">設定</a>
+      </div>
+    </header>
     <%= yield %>
+    <footer>
+      <p>
+        Copyright brainforce 2020.
+      </p>
+    </footer>
   </body>
 </html>
