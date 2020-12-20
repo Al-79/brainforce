@@ -22,3 +22,6 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+brainforceは脳力を鍛えるためのアプリケーションです。
+ゲームで遊びながら、脳を鍛えましょう。
+慣れてきたら、自分でゲームをカスタマイズすることもできます！
