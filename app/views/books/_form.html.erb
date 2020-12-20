@@ -11,13 +11,15 @@
     </div>
   <% end %>
 
-  <div class="actions">
+  <div class="js-book">
     <%= form.text_field :name, placeholder: "名前" %><br />
     <%= form.fields_for :questions do |q| %>
-      <%= q.text_field :content, placeholder: "問題" %>
-      <%= q.text_field :answer, placeholder: "答え" %>
-    <% end %><br />
-    <input type="button" value="追加する" onclick="OnAddQuestionClick()"><br />
-    <%= form.submit "作成" %>
+      <div class="js-question">
+        <%= q.text_field :content, placeholder: "問題" %>
+        <%= q.text_field :answer, placeholder: "答え" %>
+      </div>
+    <% end %>
   </div>
+  <input type="button" value="問題を追加する" id="add_question"><br />
+  <%= form.submit "作成" %>
 <% end %>
