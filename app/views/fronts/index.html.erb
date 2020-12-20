@@ -1,4 +1,5 @@
-ブレインフォースへようこそ
-新規登録　ログイン　設定
-
-問題集
+<% if user_signed_in?%>
+  <%= current_user.nickname %> さん、brainforceへようこそ
+<% else %>
+  登録してくれよなー
+<% end %>
