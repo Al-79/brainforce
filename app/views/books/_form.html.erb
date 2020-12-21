@@ -1,0 +1,25 @@
+<%= form_with(model: book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+        <% book.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="js-book">
+    <%= form.text_field :name, placeholder: "名前" %><br />
+    <%= form.fields_for :questions do |q| %>
+      <div class="js-question">
+        <%= q.text_field :content, placeholder: "問題" %>
+        <%= q.text_field :answer, placeholder: "答え" %>
+      </div>
+    <% end %>
+  </div>
+  <input type="button" value="問題を追加する" id="add_question"><br />
+  <%= form.submit "作成" %>
+<% end %>
