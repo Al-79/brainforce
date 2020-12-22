@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="concentration--top">
+  <% @book.questions.each_with_index do |q, i| %>
+    <div class="concentration--card" id="<%= i*2 %>">
+      <div class="concentration--text"><%= q.content %></div>
+      <div class="concentration--pair" id="<%= q.id %>"></div>
+    </div>
+    <div class="concentration--card" id="<%= i*2+1 %>">
+      <div class="concentration--text"><%= q.answer %></div>
+      <div class="concentration--pair" id="<%= q.id %>"></div>
+    </div>
+  <% end %>
+</div>
+<input type="button" value="カードをシャッフルする" id="shuffle_card"><br />
+<div class="concentration--comment">カードを選択してください</div>
