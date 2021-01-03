@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :duplicate_book, only: [:new]
 
   # GET /books
   # GET /books.json
@@ -14,8 +15,6 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
-    @book.questions.build
   end
 
   # GET /books/1/edit
@@ -29,7 +28,7 @@ class BooksController < ApplicationController
 
     respond_to do |format|
       if @book.save
-        format.html { redirect_to @book, notice: 'Book was successfully created.' }
+        format.html { redirect_to @book, notice: '問題集が作成されました。' }
         format.json { render :show, status: :created, location: @book }
       else
         format.html { render :new }
@@ -43,7 +42,7 @@ class BooksController < ApplicationController
   def update
     respond_to do |format|
       if @book.update(book_params)
-        format.html { redirect_to @book, notice: 'Book was successfully updated.' }
+        format.html { redirect_to @book, notice: '問題集が更新されました。' }
         format.json { render :show, status: :ok, location: @book }
       else
         format.html { render :edit }
@@ -57,7 +56,7 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     respond_to do |format|
-      format.html { redirect_to books_url, notice: 'Book was successfully destroyed.' }
+      format.html { redirect_to books_url, notice: '問題集が削除されました。' }
       format.json { head :no_content }
     end
   end
@@ -68,8 +67,18 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
     end
 
+    # newアクションの前に呼び出す
+    def duplicate_book
+      if params[:format].nil?
+        @book = Book.new
+        @book.questions.build
+      else
+        @book = Book.find(params[:format]).deep_clone(include: [:questions], except: [{ questions: [:id] }])
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, questions_attributes: [:content, :answer, :id])
+      params.require(:book).permit(:name, :genre, :comment, questions_attributes: [:content, :answer, :id])
     end
 end

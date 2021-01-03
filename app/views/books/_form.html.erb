@@ -13,6 +13,8 @@
 
   <div class="js-book">
     <%= form.text_field :name, placeholder: "名前" %><br />
+    <%= form.collection_select :genre, Genre.all, :id, :content, include_blank: "ジャンルを選択してください" %><br />
+    <%= form.text_area :comment, placeholder: "コメント" %><br />
     <%= form.fields_for :questions do |q| %>
       <div class="js-question">
         <%= q.text_field :content, placeholder: "問題" %>
