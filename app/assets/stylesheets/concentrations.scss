@@ -1,0 +1,17 @@
+// Place all the styles related to the concentrations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.concentration--top{
+  display: flex;
+}
+
+.concentration--card{
+  height: 50px;
+  width: 100px;
+  background-color: yellow;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid black;
+  margin: 10px;
+}
