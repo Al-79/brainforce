@@ -61,3 +61,5 @@ group :production do
 end
 
 gem 'devise'
+
+gem 'deep_cloneable'

@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: [:show, :edit, :update, :destroy]
+  before_action :duplicate_book, only: [:new]
 
   # GET /books
   # GET /books.json
@@ -14,8 +15,6 @@ class BooksController < ApplicationController
 
   # GET /books/new
   def new
-    @book = Book.new
-    @book.questions.build
   end
 
   # GET /books/1/edit
@@ -68,8 +67,18 @@ class BooksController < ApplicationController
       @book = Book.find(params[:id])
     end
 
+    # newアクションの前に呼び出す
+    def duplicate_book
+      if params[:format].nil?
+        @book = Book.new
+        @book.questions.build
+      else
+        @book = Book.find(params[:format]).deep_clone(include: [:questions], except: [{ questions: [:id] }])
+      end
+    end
+
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, questions_attributes: [:content, :answer, :id])
+      params.require(:book).permit(:name, :genre, :comment, questions_attributes: [:content, :answer, :id])
     end
 end
