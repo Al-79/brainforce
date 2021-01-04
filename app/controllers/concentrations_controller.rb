@@ -1,5 +1,5 @@
 class ConcentrationsController < ApplicationController
-  before_action :set_book, only: [:show, :edit]
+  before_action :set_book, only: [:show]
   def show
 
   end

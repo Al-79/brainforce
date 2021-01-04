@@ -40,6 +40,8 @@ document.addEventListener("turbolinks:load", function () {
       var idArr = Array(how_many_card)
       var displayArr = Array(how_many_card)
       for (let step = 0; step < how_many_card; step++){
+        a = $('.concentration--card#8')
+        console.log(a)
         textArr[step]=$('.concentration--card#' + step).children('.concentration--text').text()
         idArr[step]=$('.concentration--card#' + step).children('.concentration--pair').attr('id')
         displayArr[step]=$('.concentration--card#' + step).css('display')

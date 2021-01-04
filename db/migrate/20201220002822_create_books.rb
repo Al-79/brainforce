@@ -2,8 +2,9 @@ class CreateBooks < ActiveRecord::Migration[6.0]
   def change
     create_table :books do |t|
       t.string :name
-      t.string :genre
+      t.integer :genre_id
       t.string :comment
+      t.references :user, foreign_key: true
       t.timestamps
     end
   end
