@@ -40,21 +40,15 @@ document.addEventListener("turbolinks:load", function () {
       var idArr = Array(how_many_card)
       var displayArr = Array(how_many_card)
       for (let step = 0; step < how_many_card; step++){
-        a = $('.concentration--card#8')
-        console.log(a)
-        textArr[step]=$('.concentration--card#' + step).children('.concentration--text').text()
-        idArr[step]=$('.concentration--card#' + step).children('.concentration--pair').attr('id')
-        displayArr[step]=$('.concentration--card#' + step).css('display')
-        console.log(step)
+        textArr[step]=$($('.concentration--card')[step]).children('.concentration--text').text()
+        idArr[step]=$($('.concentration--card')[step]).children('.concentration--pair').attr('id')
+        displayArr[step]=$($('.concentration--card')[step]).css('display')
       }
-      console.log(textArr)
-      console.log(idArr)
-      console.log(displayArr)
       // ランダム数列に合わせて要素を割り当てる
       for (let step = 0; step < how_many_card; step++){
-        $('.concentration--card#' + step).children('.concentration--text').text(textArr[randomArr[step]])
-        $('.concentration--card#' + step).children('.concentration--pair').attr('id', idArr[randomArr[step]])
-        $('.concentration--card#' + step).css('display',displayArr[randomArr[step]])
+        $($('.concentration--card')[step]).children('.concentration--text').text(textArr[randomArr[step]])
+        $($('.concentration--card')[step]).children('.concentration--pair').attr('id', idArr[randomArr[step]])
+        $($('.concentration--card')[step]).css('display',displayArr[randomArr[step]])
       }
     })
   })
