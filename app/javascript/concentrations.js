@@ -41,16 +41,19 @@ document.addEventListener("turbolinks:load", function () {
       }
       // 要素を格納
       var textArr = Array(how_many_card)
+      var colorArr = Array(how_many_card)
       var idArr = Array(how_many_card)
       var displayArr = Array(how_many_card)
       for (let step = 0; step < how_many_card; step++){
         textArr[step]=$($('.concentration--card')[step]).children('.concentration--text').text()
+        colorArr[step]=$($('.concentration--card')[step]).children('.concentration--text').css('color')
         idArr[step]=$($('.concentration--card')[step]).children('.concentration--pair').attr('id')
         displayArr[step]=$($('.concentration--card')[step]).css('display')
       }
       // ランダム数列に合わせて要素を割り当てる
       for (let step = 0; step < how_many_card; step++){
         $($('.concentration--card')[step]).children('.concentration--text').text(textArr[randomArr[step]])
+        $($('.concentration--card')[step]).children('.concentration--text').css('color',colorArr[randomArr[step]])
         $($('.concentration--card')[step]).children('.concentration--pair').attr('id', idArr[randomArr[step]])
         $($('.concentration--card')[step]).css('display',displayArr[randomArr[step]])
       }
