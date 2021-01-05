@@ -18,9 +18,9 @@
     <%= form.fields_for :questions do |q| %>
       <div class="js-question">
         <%= q.text_field :content, placeholder: "問題" %>
-        <%= q.collection_select :cont_color, FontColor.all, :code, :content, selected: "#000000" %>
+        <%= q.collection_select :cont_color, FontColor.all, :code, :content %>
         <%= q.text_field :answer, placeholder: "答え" %>
-        <%= q.collection_select :ans_color, FontColor.all, :code, :content, selected: "#000000"  %>
+        <%= q.collection_select :ans_color, FontColor.all, :code, :content %>
       </div>
     <% end %>
   </div>
