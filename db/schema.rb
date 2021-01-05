@@ -34,7 +34,9 @@ ActiveRecord::Schema.define(version: 2020_12_20_010403) do
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "content"
+    t.string "cont_color"
     t.string "answer"
+    t.string "ans_color"
     t.bigint "book_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

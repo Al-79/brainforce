@@ -5,7 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-book = Book.create(name: '百人一首', genre_id: 1, comment: '一字決まり', user_id: 2)
+user = User.create(nickname: '定家', email: 'teika@teika.com', password: 'teikateika')
+book = Book.create(name: '百人一首', genre_id: 1, comment: '一字決まり', user_id: user.id)
 book.questions.create(content: 'む', answer: 'きりたちのほるあきのゆふくれ')
 book.questions.create(content: 'す', answer: 'ゆめのかよひちひとめよくらむ')
 book.questions.create(content: 'め', answer: 'くもかくれにしよはのつきかな')

@@ -3,6 +3,10 @@ document.addEventListener("turbolinks:load", function () {
   var check_color = 'rgb(255, 165, 0)'// orange
   var normal_color = 'rgb(255, 255, 0)'// yellow
   $(function() {
+    $(".concentration--card").css('height' , '200px' );
+    // console.log($(".concentration--card"))
+    // color: white;
+    // カードを選択
     $('.concentration--card').on('click', function() {
       isSelect = !isSelect
       if (isSelect) {
