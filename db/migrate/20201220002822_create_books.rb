@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration[6.0]
       t.integer :genre_id
       t.string :comment
       t.references :user, foreign_key: true
+      t.integer :favourite
       t.timestamps
     end
   end
