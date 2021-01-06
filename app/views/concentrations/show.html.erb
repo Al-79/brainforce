@@ -3,11 +3,11 @@
 <div class="concentration--top">
   <% @book.questions.each_with_index do |q, i| %>
     <div class="concentration--card" id="<%= i*2 %>">
-      <div class="concentration--text", style="color: <%= q.cont_color %>"><%= q.content %></div>
+      <div class="concentration--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
       <div class="concentration--pair" id="<%= q.id %>"></div>
     </div>
     <div class="concentration--card" id="<%= i*2+1 %>">
-      <div class="concentration--text", style="color: <%= q.ans_color %>"><%= q.answer %></div>
+      <div class="concentration--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
       <div class="concentration--pair" id="<%= q.id %>"></div>
     </div>
   <% end %>

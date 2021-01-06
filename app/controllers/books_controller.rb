@@ -79,6 +79,6 @@ class BooksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def book_params
-      params.require(:book).permit(:name, :genre_id, :comment, questions_attributes: [:content, :cont_color, :answer, :ans_color, :id]).merge(user_id: current_user.id)
+      params.require(:book).permit(:name, :genre_id, :font_size, :comment, questions_attributes: [:content, :cont_color, :answer, :ans_color, :id]).merge(user_id: current_user.id)
     end
 end

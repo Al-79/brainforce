@@ -10,7 +10,7 @@ if User.exists?(nickname: 'ドナルド')
 else
   user = User.create(nickname: 'ドナルド', email: 'donald@trump.com', password: 'donaldtrump')
 end
-book = Book.create(name: 'トランプ', genre_id: 99, comment: 'マーク', user_id: user.id)
+book = Book.create(name: 'トランプ', genre_id: 99, font_size: 10, comment: 'マーク', user_id: user.id)
 book.questions.create(content: '♠', cont_color: '#000000', answer: '♠︎', ans_color: '#000000')
 book.questions.create(content: '☘', cont_color: '#000000', answer: '☘', ans_color: '#000000')
 book.questions.create(content: '❤︎', cont_color: '#FF0000', answer: '❤︎', ans_color: '#FF0000')
@@ -21,7 +21,7 @@ if User.exists?(nickname: '定家')
 else
   user = User.create(nickname: '定家', email: 'teika@teika.com', password: 'teikateika')
 end
-book = Book.create(name: '百人一首', genre_id: 1, comment: '一字決まり', user_id: user.id)
+book = Book.create(name: '百人一首', genre_id: 1, font_size: 10, comment: '一字決まり', user_id: user.id)
 book.questions.create(content: 'む', cont_color: '#000000', answer: 'きりたちのほるあきのゆふくれ', ans_color: '#000000')
 book.questions.create(content: 'す', cont_color: '#000000', answer: 'ゆめのかよひちひとめよくらむ', ans_color: '#000000')
 book.questions.create(content: 'め', cont_color: '#000000', answer: 'くもかくれにしよはのつきかな', ans_color: '#000000')
