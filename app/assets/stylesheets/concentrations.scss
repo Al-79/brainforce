@@ -2,15 +2,35 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.concentration--top{
-  display: flex;
+.concentration--cell{
+  display: inline-flex;
 }
 
 .concentration--card{
+  position: relative;
+  height: 150px;
+  width: 100px;
+  text-align: center;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.concentration--head{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 150px;
   width: 100px;
   background-color: yellow;
   text-align: center;
-  vertical-align: middle;
-  border: 1px solid black;
-  margin: 10px;
+}
+
+.concentration--tail{
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 150px;
+  width: 100px;
+  background-color: green;
+  text-align: center;
 }

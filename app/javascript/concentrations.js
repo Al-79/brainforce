@@ -3,11 +3,8 @@ document.addEventListener("turbolinks:load", function () {
   var check_color = 'rgb(255, 165, 0)'// orange
   var normal_color = 'rgb(255, 255, 0)'// yellow
   $(function() {
-    $(".concentration--card").css('height' , '200px' );
-    // console.log($(".concentration--card"))
-    // color: white;
     // カードを選択
-    $('.concentration--card').on('click', function() {
+    $('.concentration--head').on('click', function() {
       isSelect = !isSelect
       if (isSelect) {
         check_card = $(this)
@@ -16,7 +13,7 @@ document.addEventListener("turbolinks:load", function () {
       } else {
         $('.concentration--comment').text("カードを選択してください")
         // ペアがあったとき
-        if (($(this).css('background-color') != check_color) && ($(this).children('.concentration--pair').attr('id') == check_card.children('.concentration--pair').attr('id'))) {
+        if (($(this).css('background-color') != check_color) && ($(this).find('.concentration--pair').attr('id') == check_card.children('.concentration--pair').attr('id'))) {
           check_card.hide()
           $(this).hide()
           $('.concentration--comment').text("揃いました！")
@@ -45,17 +42,18 @@ document.addEventListener("turbolinks:load", function () {
       var idArr = Array(how_many_card)
       var displayArr = Array(how_many_card)
       for (let step = 0; step < how_many_card; step++){
-        textArr[step]=$($('.concentration--card')[step]).children('.concentration--text').text()
-        colorArr[step]=$($('.concentration--card')[step]).children('.concentration--text').css('color')
-        idArr[step]=$($('.concentration--card')[step]).children('.concentration--pair').attr('id')
-        displayArr[step]=$($('.concentration--card')[step]).css('display')
+        textArr[step]=$($('.concentration--card')[step]).find('.concentration--text').text()
+        colorArr[step]=$($('.concentration--card')[step]).find('.concentration--text').css('color')
+        idArr[step]=$($('.concentration--card')[step]).find('.concentration--pair').attr('id')
+        displayArr[step]=$($('.concentration--head')[step]).css('display')
       }
+      console.log(idArr)
       // ランダム数列に合わせて要素を割り当てる
       for (let step = 0; step < how_many_card; step++){
-        $($('.concentration--card')[step]).children('.concentration--text').text(textArr[randomArr[step]])
-        $($('.concentration--card')[step]).children('.concentration--text').css('color',colorArr[randomArr[step]])
-        $($('.concentration--card')[step]).children('.concentration--pair').attr('id', idArr[randomArr[step]])
-        $($('.concentration--card')[step]).css('display',displayArr[randomArr[step]])
+        $($('.concentration--card')[step]).find('.concentration--text').text(textArr[randomArr[step]])
+        $($('.concentration--card')[step]).find('.concentration--text').css('color',colorArr[randomArr[step]])
+        $($('.concentration--card')[step]).find('.concentration--pair').attr('id', idArr[randomArr[step]])
+        $($('.concentration--head')[step]).css('display',displayArr[randomArr[step]])
       }
     })
   })
