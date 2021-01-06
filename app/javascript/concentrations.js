@@ -4,21 +4,21 @@ document.addEventListener("turbolinks:load", function () {
   var normal_color = 'rgb(255, 255, 0)'// yellow
   $(function() {
     // カードを選択
-    $('.concentration--head').on('click', function() {
+    $('.concentration--tail').on('click', function() {
       isSelect = !isSelect
       if (isSelect) {
         check_card = $(this)
-        check_card.css('background-color', check_color)
+        check_card.next().css('display','block')
         $('.concentration--comment').text("カードが選択されています")
       } else {
         $('.concentration--comment').text("カードを選択してください")
         // ペアがあったとき
-        if (($(this).css('background-color') != check_color) && ($(this).find('.concentration--pair').attr('id') == check_card.children('.concentration--pair').attr('id'))) {
+        if (($(this).next().find('.concentration--pair').attr('id') == check_card.next().find('.concentration--pair').attr('id'))) {
           check_card.hide()
           $(this).hide()
           $('.concentration--comment').text("揃いました！")
         }
-        check_card.css('background-color', normal_color)
+        check_card.next().css('display','none')
       }
     })
 
@@ -45,7 +45,7 @@ document.addEventListener("turbolinks:load", function () {
         textArr[step]=$($('.concentration--card')[step]).find('.concentration--text').text()
         colorArr[step]=$($('.concentration--card')[step]).find('.concentration--text').css('color')
         idArr[step]=$($('.concentration--card')[step]).find('.concentration--pair').attr('id')
-        displayArr[step]=$($('.concentration--head')[step]).css('display')
+        displayArr[step]=$($('.concentration--tail')[step]).css('display')
       }
       console.log(idArr)
       // ランダム数列に合わせて要素を割り当てる
@@ -53,7 +53,7 @@ document.addEventListener("turbolinks:load", function () {
         $($('.concentration--card')[step]).find('.concentration--text').text(textArr[randomArr[step]])
         $($('.concentration--card')[step]).find('.concentration--text').css('color',colorArr[randomArr[step]])
         $($('.concentration--card')[step]).find('.concentration--pair').attr('id', idArr[randomArr[step]])
-        $($('.concentration--head')[step]).css('display',displayArr[randomArr[step]])
+        $($('.concentration--tail')[step]).css('display',displayArr[randomArr[step]])
       }
     })
   })
