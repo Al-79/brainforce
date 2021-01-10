@@ -1,4 +1,4 @@
-class ConcentrationsController < ApplicationController
+class WordbooksController < ApplicationController
   before_action :set_book, only: [:show]
   def show
 

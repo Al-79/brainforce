@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<div class="concentration--top">
+  <% @book.questions.each do |q| %>
+    <div class="concentration--card">
+      <div class="concentration--tail">
+        <div class="concentration--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+        <div class="concentration--pair" id="<%= q.id %>"></div>
+      </div>
+      <div class="concentration--head">
+        <div class="concentration--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+        <div class="concentration--pair" id="<%= q.id %>"></div>
+      </div>
+    </div>
+  <% end %>
+</div>

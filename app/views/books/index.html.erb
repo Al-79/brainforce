@@ -13,11 +13,13 @@
     <% @books.each do |book| %>
       <tr>
         <td><%= book.name %></td>
+        <td><%= book.user.nickname %></td>
         <td><%= link_to '閲覧', book %></td>
         <td><%= link_to '編集', edit_book_path(book) %></td>
         <td><%= link_to '複製', new_book_path(book) %></td>
         <td><%= link_to '削除', book, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
-        <td><%= link_to 'テスト', concentration_path(book) %></td>
+        <td><%= link_to '神経衰弱', concentration_path(book) %></td>
+        <td><%= link_to '単語帳', wordbook_path(book) %></td>
       </tr>
     <% end %>
   </tbody>
