@@ -10,7 +10,6 @@
   position: relative;
   height: 150px;
   width: 100px;
-  text-align: center;
   border: 1px solid black;
   margin: 10px;
 }
@@ -24,7 +23,8 @@
   border: 5px solid green;
   display: none;
   background-color: white;
-  text-align: center;
+  writing-mode: vertical-rl;
+  line-height: 30px
 }
 
 .concentration--tail{
@@ -34,5 +34,4 @@
   height: 150px;
   width: 100px;
   background-color: green;
-  text-align: center;
 }
