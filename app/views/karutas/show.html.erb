@@ -3,13 +3,15 @@
 <div class="karuta--message">　</div>
 <div class="concentration--top">
   <% @book.questions.each do |q| %>
-    <div class="concentration--cell">
-      <div class="concentration--card">
+    <div class="card--cell">
+      <div class="card--format">
         <div class="karuta--tail">
-          <div class="concentration--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
-          <div class="concentration--pair" id="<%= q.id %>"></div>        
+          <div class="karuta--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+          <div class="karuta--pair" id="<%= q.id %>"></div>        
         </div>
       </div>
+    </div>
+    <div class="concentration--cell">
       <div class="karuta--reading">
         <div class="karuta--head">
           <div class="karuta--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>

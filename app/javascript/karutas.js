@@ -2,9 +2,11 @@ document.addEventListener("turbolinks:load", function () {
 
   $(function() {
     var how_many_card = $('.karuta--reading').length
-    ima_nanmonme = -1    
+    isStart = false
+    ima_nanmonme = -1   
     // スタート
     $('#start_karuta').on('click', function() {
+      isStart = true
       ima_nanmonme ++
       cursor = 0
       $('.karuta--comment').text("カードを選んでください")
@@ -22,26 +24,21 @@ document.addEventListener("turbolinks:load", function () {
           //     $('.karuta--comment').text("スタートボタンを押してください")
           //   }, 1000);
           // }
-        },100)
+        },200)
       }
       count_up()
-      // for (let step = 0; step < how_many_card; step++){
-      //   text_length = $($('.karuta--reading')[step]).find('.karuta--text').text().length
-      //   for (let cursor = 1; cursor <= text_length; cursor++){
-      //     time_step += 200
-      //     setTimeout(()=>{
-      //       karuta_message = $($('.karuta--reading')[step]).find('.karuta--text').text().slice(0,cursor)
-      //       $('.karuta--message').text(karuta_message)
-      //     }, time_step);
-      //     console.log(time_out)
-      //     // clearTimeout(time_out);
-      //   }
-      // }
     })
 
+    $('.karuta--tail').on('click', function() {
+      if (!isStart) {
+        alert("スタートボタンを押してください")
+      } else{
+        $($('.concentration--card')[step]).find('.concentration--pair').attr('id')
+      }
+    })
 
     $('#stop_karuta').on('click', function() {
-      console.log(time_out)
+      isStart = false
       clearTimeout(time_out);
     })
 
