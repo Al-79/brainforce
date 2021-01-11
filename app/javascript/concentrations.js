@@ -33,7 +33,6 @@ document.addEventListener("turbolinks:load", function () {
       }
     }
   var isSelect = false
-  var isSelect = false
   var check_color = 'rgb(255, 165, 0)'// orange
   var normal_color = 'rgb(255, 255, 0)'// yellow
   var how_many_card = $('.concentration--card').length
@@ -85,6 +84,7 @@ document.addEventListener("turbolinks:load", function () {
       }, 3000);
     })
 
+    // シャッフル
     $('#shuffle_card').on('click', function() {
       shuffle()
     })

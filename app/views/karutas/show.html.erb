@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<div class="karuta--message">　</div>
+<div class="concentration--top">
+  <% @book.questions.each do |q| %>
+    <div class="concentration--cell">
+      <div class="concentration--card">
+        <div class="karuta--tail">
+          <div class="concentration--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+          <div class="concentration--pair" id="<%= q.id %>"></div>        
+        </div>
+      </div>
+      <div class="karuta--reading">
+        <div class="karuta--head">
+          <div class="karuta--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+          <div class="karuta--pair" id="<%= q.id %>"></div>
+        </div>       
+      </div>
+    </div>
+  <% end %>
+</div>
+<div class="karuta--comment">スタートボタンを押してください</div>
+<input type="button" value="スタート(S)" id="start_karuta"><br />008080
+<input type="button" value="ストップ(S)" id="stop_karuta"><br />

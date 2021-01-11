@@ -1,0 +1,2 @@
+module KarutasHelper
+end
