@@ -1,0 +1,16 @@
+.js--button{
+  background-color: teal;
+  height: 30px;
+  width: 100px;
+  padding: 10px 0 0;
+  color: white;
+  text-align: center;
+  cursor : pointer;
+}
+.js--button:hover{
+  color:black;
+}
+
+.js--button:active{
+  background-color: #009090;
+}

@@ -11,7 +11,7 @@
         </div>
       </div>
     </div>
-    <div class="concentration--cell">
+    <div class="card--cell">
       <div class="karuta--reading">
         <div class="karuta--head">
           <div class="karuta--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
@@ -22,5 +22,5 @@
   <% end %>
 </div>
 <div class="karuta--comment">スタートボタンを押してください</div>
-<input type="button" value="スタート(S)" id="start_karuta"><br />008080
-<input type="button" value="ストップ(S)" id="stop_karuta"><br />
+<div class="js--button" id="start_karuta">スタート(S)</div>
+<div class="js--button" id="stop_karuta">ストップ(S)</div>

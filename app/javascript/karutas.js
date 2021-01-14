@@ -7,6 +7,7 @@ document.addEventListener("turbolinks:load", function () {
     // スタート
     $('#start_karuta').on('click', function() {
       isStart = true
+      // ima_nanmonme = Math.floor( Math.random() * how_many_card )
       ima_nanmonme ++
       cursor = 0
       $('.karuta--comment').text("カードを選んでください")
