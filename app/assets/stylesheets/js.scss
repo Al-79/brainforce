@@ -1,8 +1,13 @@
+.js--box{
+  display: flex;
+}
+
 .js--button{
   background-color: teal;
   height: 30px;
   width: 100px;
   padding: 10px 0 0;
+  margin: 0 10px 0;
   color: white;
   text-align: center;
   cursor : pointer;

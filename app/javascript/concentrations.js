@@ -21,14 +21,14 @@ document.addEventListener("turbolinks:load", function () {
       for (let step = 0; step < how_many_card; step++){
         textArr[step]=$($('.concentration--card')[step]).find('.concentration--text').text()
         colorArr[step]=$($('.concentration--card')[step]).find('.concentration--text').css('color')
-        idArr[step]=$($('.concentration--card')[step]).find('.concentration--pair').attr('id')
+        idArr[step]=$($('.concentration--card')[step]).find('.concentration--id').attr('id')
         displayArr[step]=$($('.concentration--tail')[step]).css('display')
       }
       // ランダム数列に合わせて要素を割り当てる
       for (let step = 0; step < how_many_card; step++){
         $($('.concentration--card')[step]).find('.concentration--text').text(textArr[randomArr[step]])
         $($('.concentration--card')[step]).find('.concentration--text').css('color',colorArr[randomArr[step]])
-        $($('.concentration--card')[step]).find('.concentration--pair').attr('id', idArr[randomArr[step]])
+        $($('.concentration--card')[step]).find('.concentration--id').attr('id', idArr[randomArr[step]])
         $($('.concentration--tail')[step]).css('display',displayArr[randomArr[step]])
       }
     }
@@ -49,7 +49,7 @@ document.addEventListener("turbolinks:load", function () {
       } else {
         $(this).next().css('display','block')
         // ペアがあったとき
-        if (($(this).next().find('.concentration--pair').attr('id') == check_card.next().find('.concentration--pair').attr('id'))) {
+        if (($(this).next().find('.concentration--id').attr('id') == check_card.next().find('.concentration--id').attr('id'))) {
           setTimeout(()=>{
             check_card.hide()
             $(this).hide()

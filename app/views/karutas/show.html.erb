@@ -7,7 +7,7 @@
       <div class="card--format">
         <div class="karuta--tail">
           <div class="karuta--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
-          <div class="karuta--pair" id="<%= q.id %>"></div>        
+          <div class="karuta--id" id="<%= q.id %>"></div>        
         </div>
       </div>
     </div>
@@ -15,12 +15,16 @@
       <div class="karuta--reading">
         <div class="karuta--head">
           <div class="karuta--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
-          <div class="karuta--pair" id="<%= q.id %>"></div>
+          <div class="karuta--id" id="<%= q.id %>"></div>
         </div>       
       </div>
     </div>
   <% end %>
 </div>
-<div class="karuta--comment">スタートボタンを押してください</div>
-<div class="js--button" id="start_karuta">スタート(S)</div>
-<div class="js--button" id="stop_karuta">ストップ(S)</div>
+<div class="karuta--comment">スタート(S)を押してください</div>
+<div class="js--box">
+  <div class="js--button" id="start__karuta">スタート(S)</div>
+  <div class="js--button" id="pass__karuta">パス(S)</div>
+  <div class="js--button" id="stop__karuta">ストップ(S)</div>
+</div>
+<div class="karuta--time">　</div>

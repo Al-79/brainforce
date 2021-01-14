@@ -1,5 +1,10 @@
 .card--cell{
   display: inline-flex;
+  cursor: pointer;
+}
+
+.card--cell:hover{
+  opacity: 0.5 ;
 }
 
 .card--format{
