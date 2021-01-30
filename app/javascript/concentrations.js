@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function () {
 
     // シャッフル
-    function shuffle(){
+    function concentration_shuffle(){
       // 0からnまでの数列と空の数列を作る
       indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
       randomArr = []
@@ -33,10 +33,8 @@ document.addEventListener("turbolinks:load", function () {
       }
     }
   var isSelect = false
-  var check_color = 'rgb(255, 165, 0)'// orange
-  var normal_color = 'rgb(255, 255, 0)'// yellow
   var how_many_card = $('.concentration--card').length
-  shuffle()// いきなりシャッフル
+  concentration_shuffle()// いきなりシャッフル
 
   $(function() {
     // カードを選択
@@ -68,7 +66,7 @@ document.addEventListener("turbolinks:load", function () {
     })
 
     // オープン
-    $('#open_card').on('click', function() {
+    $('#concentration_open').on('click', function() {
       isSelect = false
       // 裏が残っているやつだけ、表をオープンにする
       for (let step = 0; step < how_many_card; step++){
@@ -85,8 +83,8 @@ document.addEventListener("turbolinks:load", function () {
     })
 
     // シャッフル
-    $('#shuffle_card').on('click', function() {
-      shuffle()
+    $('#concentration_shuffle').on('click', function() {
+      concentration_shuffle()
     })
   
   })
