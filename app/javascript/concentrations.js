@@ -48,12 +48,10 @@ document.addEventListener("turbolinks:load", function () {
         $(this).next().css('display','block')
         // ペアがあったとき
         if (($(this).next().find('.concentration--id').attr('id') == check_card.next().find('.concentration--id').attr('id'))) {
-          setTimeout(()=>{
-            check_card.hide()
-            $(this).hide()
-            check_card.next().css('display','none')
-            $(this).next().css('display','none')
-          }, 1000);
+          check_card.hide(1000)
+          $(this).hide(1000)
+          check_card.next().hide(1000)
+          $(this).next().hide(1000)
           $('.concentration--comment').text("揃いました！")
         } else{
           setTimeout(()=>{

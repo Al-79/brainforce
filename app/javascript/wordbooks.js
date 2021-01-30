@@ -35,32 +35,14 @@ var how_many_card = $('.wordbook--card').length
 wordbook_shuffle()// いきなりシャッフル
 
 $(function() {
-  // カードを選択
-  $('.concentration--tail').on('click', function() {
-    isSelect = !isSelect
-    if (isSelect) {
-      check_card = $(this)
-      check_card.next().css('display','block')
-      $('.concentration--comment').text("カードが選択されています")
-    } else {
-      $(this).next().css('display','block')
-      // ペアがあったとき
-      if (($(this).next().find('.concentration--id').attr('id') == check_card.next().find('.concentration--id').attr('id'))) {
-        setTimeout(()=>{
-          check_card.hide()
-          $(this).hide()
-          check_card.next().css('display','none')
-          $(this).next().css('display','none')
-        }, 1000);
-        $('.concentration--comment').text("揃いました！")
-      } else{
-        setTimeout(()=>{
-          check_card.next().css('display','none')
-          $(this).next().css('display','none')
-        }, 1000);
-        $('.concentration--comment').text("残念！")
-      }
-    }
+  // 表裏を裏返し
+  $('.wordbook--tail').on('click', function() {
+    $(this).find('.wordbook--tail--content').hide()
+    $(this).next().find('.wordbook--head--content').show()
+  })
+  $('.wordbook--head').on('click', function() {
+    $(this).find('.wordbook--head--content').hide()
+    $(this).prev().find('.wordbook--tail--content').show()
   })
 
   // シャッフル

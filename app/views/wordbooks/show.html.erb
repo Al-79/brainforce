@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+単語帳(クリックすると表裏が入れ替わります)
 <div class="concentration--top">
   <% @book.questions.each do |q| %>
     <div class="card--cell">
@@ -18,3 +18,4 @@
     </div>
   <% end %>
 </div>
+<input type="button" value="シャッフル" id="wordbook_shuffle"><br />
