@@ -2,16 +2,16 @@
 単語帳(クリックすると表裏が入れ替わります)
 <div class="concentration--top">
   <% @book.questions.each do |q| %>
-    <div class="card--cell">
-      <div class="card--format">
-        <div class="wordbook--tail">
-          <div class="wordbook--tail--content">
-            <div class="wordbook--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+    <div class="card__cell">
+      <div class="card__format">
+        <div class="wordbook__tail">
+          <div class="wordbook__tail--content">
+            <div class="wordbook__text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
           </div>
         </div>
-        <div class="wordbook--head">
-          <div class="wordbook--head--content">
-            <div class="wordbook--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+        <div class="wordbook__head">
+          <div class="wordbook__head--content">
+            <div class="wordbook__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
           </div>
         </div>
       </div>

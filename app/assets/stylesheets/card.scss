@@ -1,4 +1,4 @@
-.card--cell{
+.card__cell{
   display: inline-flex;
   cursor: pointer;
   &:hover{
@@ -6,7 +6,7 @@
   }
 }
 
-.card--format{
+.card__format{
   position: relative;
   height: 150px;
   width: 100px;

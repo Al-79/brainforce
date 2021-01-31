@@ -36,13 +36,13 @@ wordbook_shuffle()// いきなりシャッフル
 
 $(function() {
   // 表裏を裏返し
-  $('.wordbook--tail').on('click', function() {
-    $(this).find('.wordbook--tail--content').hide()
-    $(this).next().find('.wordbook--head--content').show()
+  $('.wordbook__tail').on('click', function() {
+    $(this).find('.wordbook__tail--content').hide()
+    $(this).next().find('.wordbook__head--content').show()
   })
-  $('.wordbook--head').on('click', function() {
-    $(this).find('.wordbook--head--content').hide()
-    $(this).prev().find('.wordbook--tail--content').show()
+  $('.wordbook__head').on('click', function() {
+    $(this).find('.wordbook__head--content').hide()
+    $(this).prev().find('.wordbook__tail--content').show()
   })
 
   // シャッフル

@@ -1,11 +1,11 @@
 // Place all the styles related to the karutas controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.karuta--head{
+.karuta__head{
   display: none;
 }
 
-.karuta--tail{
+.karuta__tail{
   position: absolute;
   top: 0%;
   left: 0%;
@@ -17,10 +17,10 @@
   line-height: 30px;
 }
 
-#pass__karuta{
+#karuta--pass{
   display: none;
 }
 
-#stop__karuta{
+#karuta--stop{
   display: none;
 }

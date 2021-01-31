@@ -1,8 +1,8 @@
-.js--box{
+.js__box{
   display: flex;
 }
 
-.js--button{
+.js__button{
   background-color: teal;
   height: 30px;
   width: 100px;
@@ -11,11 +11,10 @@
   color: white;
   text-align: center;
   cursor : pointer;
-}
-.js--button:hover{
-  color:black;
-}
-
-.js--button:active{
-  background-color: #009090;
+  &:hover{
+    color:black;
+  }
+  &:active{
+    background-color: #009090;
+  }
 }
