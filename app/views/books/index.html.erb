@@ -20,6 +20,7 @@
         <td><%= link_to '削除', book, method: :delete, data: { confirm: '本当に削除しますか？' } %></td>
         <td><%= link_to '神経衰弱', concentration_path(book) %></td>
         <td><%= link_to '単語帳', wordbook_path(book) %></td>
+        <td><%= link_to 'カルタ', karuta_path(book) %></td>
       </tr>
     <% end %>
   </tbody>

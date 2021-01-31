@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function () {
 
     // シャッフル
-    function shuffle(){
+    function concentration_shuffle(){
       // 0からnまでの数列と空の数列を作る
       indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
       randomArr = []
@@ -21,23 +21,20 @@ document.addEventListener("turbolinks:load", function () {
       for (let step = 0; step < how_many_card; step++){
         textArr[step]=$($('.concentration--card')[step]).find('.concentration--text').text()
         colorArr[step]=$($('.concentration--card')[step]).find('.concentration--text').css('color')
-        idArr[step]=$($('.concentration--card')[step]).find('.concentration--pair').attr('id')
+        idArr[step]=$($('.concentration--card')[step]).find('.concentration--id').attr('id')
         displayArr[step]=$($('.concentration--tail')[step]).css('display')
       }
       // ランダム数列に合わせて要素を割り当てる
       for (let step = 0; step < how_many_card; step++){
         $($('.concentration--card')[step]).find('.concentration--text').text(textArr[randomArr[step]])
         $($('.concentration--card')[step]).find('.concentration--text').css('color',colorArr[randomArr[step]])
-        $($('.concentration--card')[step]).find('.concentration--pair').attr('id', idArr[randomArr[step]])
+        $($('.concentration--card')[step]).find('.concentration--id').attr('id', idArr[randomArr[step]])
         $($('.concentration--tail')[step]).css('display',displayArr[randomArr[step]])
       }
     }
   var isSelect = false
-  var isSelect = false
-  var check_color = 'rgb(255, 165, 0)'// orange
-  var normal_color = 'rgb(255, 255, 0)'// yellow
   var how_many_card = $('.concentration--card').length
-  shuffle()// いきなりシャッフル
+  concentration_shuffle()// いきなりシャッフル
 
   $(function() {
     // カードを選択
@@ -50,13 +47,11 @@ document.addEventListener("turbolinks:load", function () {
       } else {
         $(this).next().css('display','block')
         // ペアがあったとき
-        if (($(this).next().find('.concentration--pair').attr('id') == check_card.next().find('.concentration--pair').attr('id'))) {
-          setTimeout(()=>{
-            check_card.hide()
-            $(this).hide()
-            check_card.next().css('display','none')
-            $(this).next().css('display','none')
-          }, 1000);
+        if (($(this).next().find('.concentration--id').attr('id') == check_card.next().find('.concentration--id').attr('id'))) {
+          check_card.hide(1000)
+          $(this).hide(1000)
+          check_card.next().hide(1000)
+          $(this).next().hide(1000)
           $('.concentration--comment').text("揃いました！")
         } else{
           setTimeout(()=>{
@@ -69,7 +64,7 @@ document.addEventListener("turbolinks:load", function () {
     })
 
     // オープン
-    $('#open_card').on('click', function() {
+    $('#concentration_open').on('click', function() {
       isSelect = false
       // 裏が残っているやつだけ、表をオープンにする
       for (let step = 0; step < how_many_card; step++){
@@ -85,8 +80,9 @@ document.addEventListener("turbolinks:load", function () {
       }, 3000);
     })
 
-    $('#shuffle_card').on('click', function() {
-      shuffle()
+    // シャッフル
+    $('#concentration_shuffle').on('click', function() {
+      concentration_shuffle()
     })
   
   })

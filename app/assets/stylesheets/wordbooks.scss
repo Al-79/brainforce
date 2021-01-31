@@ -1,0 +1,31 @@
+// Place all the styles related to the karutas controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.wordbook--head{
+  position: absolute;
+  &--content{
+    display: none;
+    top: 0%;
+    left: 0%;
+    height: 140px;
+    width: 90px;
+    border: 5px solid green;
+    background-color: white;
+    writing-mode: vertical-rl;
+    line-height: 30px;
+  }
+}
+
+.wordbook--tail{
+  position: absolute;
+  &--content{
+    top: 0%;
+    left: 0%;
+    height: 140px;
+    width: 90px;
+    border: 5px solid green;
+    background-color: white;
+    writing-mode: vertical-rl;
+    line-height: 30px;
+  }
+}

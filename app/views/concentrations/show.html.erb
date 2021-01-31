@@ -2,24 +2,26 @@
 
 <div class="concentration--top">
   <% @book.questions.each do |q| %>
-    <div class="concentration--cell">
+    <div class="card--cell">
       <div class="concentration--card">
         <div class="concentration--tail"></div>
         <div class="concentration--head">
           <div class="concentration--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
-          <div class="concentration--pair" id="<%= q.id %>"></div>
+          <div class="concentration--id" id="<%= q.id %>"></div>
         </div>
       </div>
+    </div>
+    <div class="card--cell">
       <div class="concentration--card">
         <div class="concentration--tail"></div>
         <div class="concentration--head">
           <div class="concentration--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
-          <div class="concentration--pair" id="<%= q.id %>"></div>
+          <div class="concentration--id" id="<%= q.id %>"></div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-<input type="button" value="カードをシャッフルする" id="shuffle_card"><br />
-<input type="button" value="カードをオープンする" id="open_card"><br />
+<input type="button" value="シャッフル" id="concentration_shuffle"><br />
+<input type="button" value="オープン" id="concentration_open"><br />
 <div class="concentration--comment">カードを選択してください</div>
