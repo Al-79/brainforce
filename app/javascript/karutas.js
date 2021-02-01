@@ -1,8 +1,26 @@
 document.addEventListener("turbolinks:load", function () {
-  function count_up(){// この動作を二つに分割しろ
+
+  // シャッフル
+  function karuta_tail_shuffle(){
+    // 0からnまでの数列と空の数列を作る
+    indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
+    randomArr = []
+    // 空の数列に数を移し、ランダム数列にする
+    while (indexArr.length > 0) {
+      n = indexArr.length;
+      k = Math.floor(Math.random() * n);
+    
+      randomArr.push(indexArr[k]);
+      indexArr.splice(k, 1);
+    }
+  }
+
+  // タイマー
+  function count_up(){
     karuta_frame --
     $('.karuta__time').text("残り時間：" + Math.ceil(karuta_frame / 5) + "　得点：" + ima_nanten)
-    karuta_text = $($('.karuta__reading')[ima_nanmonme]).find('.karuta__text').text()
+    karuta_text = $($('.karuta__head')[ima_nanmonme]).find('.karuta__text').text()
+    console.log(karuta_text.slice(0,cursor))
     if (karuta_text == ""){
       karuta_text = "　"
     }
@@ -21,14 +39,15 @@ document.addEventListener("turbolinks:load", function () {
     },200)
   }
 
+  var how_many_card = $('.karuta__head').length
+  isStart = false
+  isCount = false
+  isPass = false
+  isInterval = false
+  ima_nanmonme = 0
+  ima_nanten = 0
+
   $(function() {
-    var how_many_card = $('.karuta__reading').length
-    isStart = false
-    isCount = false
-    isPass = false
-    isInterval = false
-    ima_nanmonme = 0
-    ima_nanten = 0
     // スタート
     $('#karuta--start').on('click', function() {
       isStart = true
@@ -52,10 +71,12 @@ document.addEventListener("turbolinks:load", function () {
         alert("現在パス中です")
       } else if (!isStart) {
         alert("スタート(s)を押してください")
+      } else if (isInterval) {
+        // 正解判定中に連打しても正解が追加されないように
       } else{
         if ($(this).find('.karuta__id').attr('id') == $($('.karuta__head')[ima_nanmonme]).find('.karuta__id').attr('id')) {
           $('.karuta__comment').text("正解！")
-          ima_nanten ++
+          ima_nanten += 10
           isInterval = true
           setTimeout(()=>{
             isInterval = false
@@ -78,6 +99,7 @@ document.addEventListener("turbolinks:load", function () {
         $('.karuta__comment').text("カードを選んでください")
         ima_nanmonme ++
         cursor = 0
+        console.log("パスした")
       },1000)
     })
 
