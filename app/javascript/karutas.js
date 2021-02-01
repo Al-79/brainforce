@@ -1,7 +1,7 @@
 document.addEventListener("turbolinks:load", function () {
 
   // シャッフル
-  function karuta_tail_shuffle(){
+  function randomArr(){
     // 0からnまでの数列と空の数列を作る
     indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
     randomArr = []
@@ -13,13 +13,14 @@ document.addEventListener("turbolinks:load", function () {
       randomArr.push(indexArr[k]);
       indexArr.splice(k, 1);
     }
+    return randomArr
   }
 
   // タイマー
   function count_up(){
     karuta_frame --
     $('.karuta__time').text("残り時間：" + Math.ceil(karuta_frame / 5) + "　得点：" + ima_nanten)
-    karuta_text = $($('.karuta__head')[ima_nanmonme]).find('.karuta__text').text()
+    karuta_text = $($('.karuta__head')[randomArr[ima_nanmonme]]).find('.karuta__text').text()
     if (karuta_text == ""){
       karuta_text = "　"
     }
@@ -68,6 +69,7 @@ document.addEventListener("turbolinks:load", function () {
       $('#karuta--start').css('display','none')
       $('#karuta--pass').css('display','block')
       $('#karuta--stop').css('display','block')
+      randomArr = randomArr()
       if (isCount) {
       } else{
         isCount = true
@@ -86,7 +88,7 @@ document.addEventListener("turbolinks:load", function () {
       } else if (!isStart) {
         alert("スタート(s)を押してください")
       } else{
-        if ($(this).find('.karuta__id').attr('id') == $($('.karuta__head')[ima_nanmonme]).find('.karuta__id').attr('id')) {
+        if ($(this).find('.karuta__id').attr('id') == $($('.karuta__head')[randomArr[ima_nanmonme]]).find('.karuta__id').attr('id')) {
           $('.karuta__comment').text("正解！")
           ima_nanten += 10
           isInterval = true
