@@ -20,18 +20,32 @@ document.addEventListener("turbolinks:load", function () {
     karuta_frame --
     $('.karuta__time').text("残り時間：" + Math.ceil(karuta_frame / 5) + "　得点：" + ima_nanten)
     karuta_text = $($('.karuta__head')[ima_nanmonme]).find('.karuta__text').text()
-    console.log(karuta_text.slice(0,cursor))
     if (karuta_text == ""){
       karuta_text = "　"
     }
     karuta_time_out = setTimeout(()=>{
       cursor ++
       $('.karuta__message').text(karuta_text.slice(0,cursor))
-      if (karuta_frame >= 0){
+      if (isPass || isInterval){
+        setTimeout(()=>{
+          $('.karuta__comment').text("カードを選んでください")
+          ima_nanmonme ++
+          cursor = 0
+          count_up()
+        },1000)
+      } else if (ima_nanmonme >= how_many_card){
+        ima_nanten += Math.ceil(karuta_frame / 5)
+        $('.karuta__comment').text("読み札がなくなりました。終了です")
+        $('.karuta__time').text("得点：" + ima_nanten)
+        isStart = false
+        $('#karuta--start').css('display','block')
+        $('#karuta--pass').css('display','none')
+        $('#karuta--stop').css('display','none')
+      } else if (karuta_frame >= 0){
         count_up()
       } else{
-        isStart = false
         $('.karuta__comment').text("タイムオーバー！")
+        isStart = false
         $('#karuta--start').css('display','block')
         $('#karuta--pass').css('display','none')
         $('#karuta--stop').css('display','none')
@@ -67,12 +81,10 @@ document.addEventListener("turbolinks:load", function () {
     })
 
     $('.karuta__tail').on('click', function() {
-      if (isPass) {
-        alert("現在パス中です")
+      if (isPass || isInterval) {
+        // 正解判定中、パス中に正解できないように
       } else if (!isStart) {
         alert("スタート(s)を押してください")
-      } else if (isInterval) {
-        // 正解判定中に連打しても正解が追加されないように
       } else{
         if ($(this).find('.karuta__id').attr('id') == $($('.karuta__head')[ima_nanmonme]).find('.karuta__id').attr('id')) {
           $('.karuta__comment').text("正解！")
@@ -80,9 +92,6 @@ document.addEventListener("turbolinks:load", function () {
           isInterval = true
           setTimeout(()=>{
             isInterval = false
-            $('.karuta__comment').text("カードを選んでください")
-            ima_nanmonme ++
-            cursor = 0
           },1000)
         } else{
           $('.karuta__comment').text("残念！")
@@ -96,10 +105,6 @@ document.addEventListener("turbolinks:load", function () {
       isPass = true
       setTimeout(()=>{
         isPass = false
-        $('.karuta__comment').text("カードを選んでください")
-        ima_nanmonme ++
-        cursor = 0
-        console.log("パスした")
       },1000)
     })
 
