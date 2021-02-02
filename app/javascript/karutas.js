@@ -1,20 +1,20 @@
 document.addEventListener("turbolinks:load", function () {
 
   // シャッフル
-  function randomArr(){
+  function randArr(){
     // 0からnまでの数列と空の数列を作る
-    indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
-    randomArr = []
+    inArr = Array.from({ length: how_many_card }).map((_, index) => index)
+    outArr = []
     // 空の数列に数を移し、ランダム数列にする
-    while (indexArr.length > 0) {
-      n = indexArr.length;
+    while (inArr.length > 0) {
+      n = inArr.length;
       k = Math.floor(Math.random() * n);
     
-      randomArr.push(indexArr[k]);
-      indexArr.splice(k, 1);
-    }
-    return randomArr
-  }
+      outArr.push(inArr[k]);
+      inArr.splice(k, 1);
+    };
+    return outArr;
+  };
 
   // タイマー
   function count_up(){
@@ -69,7 +69,7 @@ document.addEventListener("turbolinks:load", function () {
       $('#karuta--start').css('display','none')
       $('#karuta--pass').css('display','block')
       $('#karuta--stop').css('display','block')
-      randomArr = randomArr()
+      randomArr = randArr();
       if (isCount) {
       } else{
         isCount = true
