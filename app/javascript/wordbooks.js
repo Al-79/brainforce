@@ -37,12 +37,12 @@ wordbook_shuffle()// いきなりシャッフル
 $(function() {
   // 表裏を裏返し
   $('.wordbook__tail').on('click', function() {
-    $(this).find('.wordbook__tail--content').hide()
-    $(this).next().find('.wordbook__head--content').show()
+    $(this).hide()
+    $(this).next().show()
   })
   $('.wordbook__head').on('click', function() {
-    $(this).find('.wordbook__head--content').hide()
-    $(this).prev().find('.wordbook__tail--content').show()
+    $(this).hide()
+    $(this).prev().show()
   })
 
   // シャッフル
