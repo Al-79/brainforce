@@ -6,8 +6,10 @@
     <div class="card__object">
       <div class="card__cell">
         <div class="karuta__tail">
-          <div class="karuta__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
-          <div class="karuta__id" id="<%= q.id %>"></div>        
+          <div class="karuta__tail--content">
+            <div class="karuta__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+            <div class="karuta__id" id="<%= q.id %>"></div>
+          </div>
         </div>
       </div>
     </div>
