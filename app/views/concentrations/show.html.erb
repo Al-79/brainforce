@@ -6,7 +6,9 @@
       <div class="card__cell">
         <div class="concentration__tail"></div>
         <div class="concentration__head">
-          <div class="concentration__text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+          <div class="concentration__head--content">
+            <div class="concentration__text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+          </div>
           <div class="concentration__id" id="<%= q.id %>"></div>
         </div>
       </div>
@@ -15,7 +17,9 @@
       <div class="card__cell">
         <div class="concentration__tail"></div>
         <div class="concentration__head">
-          <div class="concentration__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+          <div class="concentration__head--content">
+            <div class="concentration__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+          </div>
           <div class="concentration__id" id="<%= q.id %>"></div>
         </div>
       </div>

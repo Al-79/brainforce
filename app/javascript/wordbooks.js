@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function () {
 
-  // シャッフル
+  // 要素シャッフル
   function wordbook_shuffle(){
     // 0からnまでの数列と空の数列を作る
     indexArr = Array.from({ length: how_many_card }).map((_, index) => index)

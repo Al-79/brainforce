@@ -1,18 +1,22 @@
 // Place all the styles related to the concentrations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .concentration__head{
+  display: none;
   position: absolute;
-  top: 0%;
-  left: 0%;
+  border: 5px solid green;
+  background-color: white;
   height: 140px;
   width: 90px;
-  border: 5px solid green;
-  display: none;
-  background-color: white;
-  writing-mode: vertical-rl;
-  line-height: 30px;
+  &--content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 140px;
+    margin: auto;
+    writing-mode: vertical-rl;
+    line-height: 30px;
+  }
 }
 
 .concentration__tail{

@@ -3,17 +3,17 @@ document.addEventListener("turbolinks:load", function () {
   // シャッフル
   function randArr(){
     // 0からnまでの数列と空の数列を作る
-    inArr = Array.from({ length: how_many_card }).map((_, index) => index)
-    outArr = []
+    indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
+    randomArr = []
     // 空の数列に数を移し、ランダム数列にする
-    while (inArr.length > 0) {
-      n = inArr.length;
+    while (indexArr.length > 0) {
+      n = indexArr.length;
       k = Math.floor(Math.random() * n);
     
-      outArr.push(inArr[k]);
-      inArr.splice(k, 1);
+      randomArr.push(indexArr[k]);
+      randomArr.splice(k, 1);
     };
-    return outArr;
+    return randomArr;
   };
 
   // タイマー
