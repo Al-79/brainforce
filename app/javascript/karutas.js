@@ -1,6 +1,39 @@
 document.addEventListener("turbolinks:load", function () {
 
-  // シャッフル
+  // 要素シャッフル
+  function karuta_shuffle(){
+    // 0からnまでの数列と空の数列を作る
+    indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
+    randomArr = []
+    // 空の数列に数を移し、ランダム数列にする
+    while (indexArr.length > 0) {
+      n = indexArr.length;
+      k = Math.floor(Math.random() * n);
+    
+      randomArr.push(indexArr[k]);
+      indexArr.splice(k, 1);
+    }
+    // 要素を格納
+    var textArr = Array(how_many_card)
+    var colorArr = Array(how_many_card)
+    var idArr = Array(how_many_card)
+    var tailArr = Array(how_many_card)
+    for (let step = 0; step < how_many_card; step++){
+      textArr[step]=$($('.card__cell')[step]).find('.karuta__text').text()
+      colorArr[step]=$($('.card__cell')[step]).find('.karuta__text').css('color')
+      idArr[step]=$($('.card__cell')[step]).find('.karuta__id').attr('id')
+      tailArr[step]=$($('.karuta__tail')[step]).css('display')
+    }
+    // ランダム数列に合わせて要素を割り当てる
+    for (let step = 0; step < how_many_card; step++){
+      $($('.card__cell')[step]).find('.karuta__text').text(textArr[randomArr[step]])
+      $($('.card__cell')[step]).find('.karuta__text').css('color',colorArr[randomArr[step]])
+      $($('.card__cell')[step]).find('.karuta__id').attr('id', idArr[randomArr[step]])
+      $($('.karuta__tail')[step]).css('display',tailArr[randomArr[step]])
+    }
+  }
+
+  // 読み札シャッフル用
   function randArr(){
     // 0からnまでの数列と空の数列を作る
     indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
@@ -61,6 +94,7 @@ document.addEventListener("turbolinks:load", function () {
   isInterval = false
   ima_nanmonme = 0
   ima_nanten = 0
+  karuta_shuffle()
 
   $(function() {
     // スタート

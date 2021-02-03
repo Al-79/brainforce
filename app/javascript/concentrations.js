@@ -32,6 +32,7 @@ document.addEventListener("turbolinks:load", function () {
       $($('.concentration__tail')[step]).css('display',tailArr[randomArr[step]])
     }
   }
+
   var how_many_card = $('.card__cell').length
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
