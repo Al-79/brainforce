@@ -66,6 +66,18 @@ document.addEventListener("turbolinks:load", function () {
             $(this).next().css('display','none')
           }, 1000);
           $('.concentration__comment').text("残念！")
+          // CPUモードの場合、CPUの番になる
+          if (isCPUmode){
+            setTimeout(()=>{
+              $('.concentration__comment').text("CPUの番です")
+            }, 1000);
+            setTimeout(()=>{
+              $($('.concentration__tail')[0]).trigger('click')
+            }, 2000);
+            setTimeout(()=>{
+              $($('.concentration__tail')[1]).trigger('click')
+            }, 3000);
+          }
         }
       }
     })

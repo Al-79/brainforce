@@ -44,7 +44,7 @@ document.addEventListener("turbolinks:load", function () {
       k = Math.floor(Math.random() * n);
     
       randomArr.push(indexArr[k]);
-      randomArr.splice(k, 1);
+      indexArr.splice(k, 1);
     };
     return randomArr;
   };
@@ -104,8 +104,7 @@ document.addEventListener("turbolinks:load", function () {
       $('#karuta--pass').css('display','block')
       $('#karuta--stop').css('display','block')
       randomArr = randArr();
-      if (isCount) {
-      } else{
+      if (!isCount) {
         isCount = true
         karuta_frame = 300
         $('.karuta__time').text("残り時間：" + karuta_frame / 5)
