@@ -10,7 +10,7 @@ if User.exists?(email: 'donald@trump.com')
 else
   user = User.create(nickname: 'ドナルド', email: 'donald@trump.com', password: 'donaldtrump')
 end
-book = Book.create(name: 'トランプ', genre_id: 99, font_size: 10, comment: 'マーク', user_id: user.id)
+book = Book.create(name: 'トランプ', genre_id: 99, font_size: 50, comment: 'マーク', user_id: user.id)
 book.questions.create(content: '♠', cont_color: '#000000', answer: '♠︎', ans_color: '#000000')
 book.questions.create(content: '☘', cont_color: '#000000', answer: '☘', ans_color: '#000000')
 book.questions.create(content: '❤︎', cont_color: '#FF0000', answer: '❤︎', ans_color: '#FF0000')

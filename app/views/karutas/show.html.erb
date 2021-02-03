@@ -1,30 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<div class="karuta--message">　</div>
-<div class="concentration--top">
+<div class="karuta__message">　</div>
+<div class="concentration__top">
   <% @book.questions.each do |q| %>
-    <div class="card--cell">
-      <div class="card--format">
-        <div class="karuta--tail">
-          <div class="karuta--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
-          <div class="karuta--id" id="<%= q.id %>"></div>        
+    <div class="card__object">
+      <div class="card__cell">
+        <div class="karuta__tail">
+          <div class="karuta__tail--content">
+            <div class="karuta__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+            <div class="karuta__id" id="<%= q.id %>"></div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="card--cell">
-      <div class="karuta--reading">
-        <div class="karuta--head">
-          <div class="karuta--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
-          <div class="karuta--id" id="<%= q.id %>"></div>
+    <div class="card__object">
+        <div class="karuta__head">
+          <div class="karuta__text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+          <div class="karuta__id" id="<%= q.id %>"></div>
         </div>       
-      </div>
     </div>
   <% end %>
 </div>
-<div class="karuta--comment">スタート(s)を押してください</div>
-<div class="js--box">
-  <div class="js--button" id="start__karuta">スタート(s)</div>
-  <div class="js--button" id="pass__karuta">パス(p)</div>
-  <div class="js--button" id="stop__karuta">ストップ(s)</div>
+<div class="karuta__comment">スタート(s)を押してください</div>
+<div class="js__box">
+  <div class="js__button" id="karuta--start">スタート(s)</div>
+  <div class="js__button" id="karuta--pass">パス(p)</div>
+  <div class="js__button" id="karuta--stop">ストップ(s)</div>
 </div>
-<div class="karuta--time">　</div>
+<div class="karuta__time">　</div>

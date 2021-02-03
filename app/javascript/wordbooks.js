@@ -1,6 +1,6 @@
 document.addEventListener("turbolinks:load", function () {
 
-  // シャッフル
+  // 要素シャッフル
   function wordbook_shuffle(){
     // 0からnまでの数列と空の数列を作る
     indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
@@ -36,13 +36,13 @@ wordbook_shuffle()// いきなりシャッフル
 
 $(function() {
   // 表裏を裏返し
-  $('.wordbook--tail').on('click', function() {
-    $(this).find('.wordbook--tail--content').hide()
-    $(this).next().find('.wordbook--head--content').show()
+  $('.wordbook__tail').on('click', function() {
+    $(this).hide()
+    $(this).next().show()
   })
-  $('.wordbook--head').on('click', function() {
-    $(this).find('.wordbook--head--content').hide()
-    $(this).prev().find('.wordbook--tail--content').show()
+  $('.wordbook__head').on('click', function() {
+    $(this).hide()
+    $(this).prev().show()
   })
 
   // シャッフル

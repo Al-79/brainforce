@@ -1,27 +1,36 @@
 <p id="notice"><%= notice %></p>
 
-<div class="concentration--top">
+<div class="concentration__top">
   <% @book.questions.each do |q| %>
-    <div class="card--cell">
-      <div class="concentration--card">
-        <div class="concentration--tail"></div>
-        <div class="concentration--head">
-          <div class="concentration--text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
-          <div class="concentration--id" id="<%= q.id %>"></div>
+    <div class="card__object">
+      <div class="card__cell">
+        <div class="concentration__tail"></div>
+        <div class="concentration__head">
+          <div class="concentration__head--content">
+            <div class="concentration__text", style="color: <%= q.cont_color %>; font-size: <%= @book.font_size %>px"><%= q.content %></div>
+          </div>
+          <div class="concentration__id" id="<%= q.id %>"></div>
         </div>
       </div>
     </div>
-    <div class="card--cell">
-      <div class="concentration--card">
-        <div class="concentration--tail"></div>
-        <div class="concentration--head">
-          <div class="concentration--text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
-          <div class="concentration--id" id="<%= q.id %>"></div>
+    <div class="card__object">
+      <div class="card__cell">
+        <div class="concentration__tail"></div>
+        <div class="concentration__head">
+          <div class="concentration__head--content">
+            <div class="concentration__text", style="color: <%= q.ans_color %>; font-size: <%= @book.font_size %>px"><%= q.answer %></div>
+          </div>
+          <div class="concentration__id" id="<%= q.id %>"></div>
         </div>
       </div>
     </div>
   <% end %>
 </div>
-<input type="button" value="シャッフル" id="concentration_shuffle"><br />
-<input type="button" value="オープン" id="concentration_open"><br />
-<div class="concentration--comment">カードを選択してください</div>
+<div class="concentration__comment">モードを選択してください</div>
+<div class="js__box">
+  <div class="js__button" id="concentration--shuffle">シャッフル(s)</div>
+  <div class="js__button" id="concentration--open">オープン(o)</div>
+  <div class="js__button" id="concentration--1Pmode">1人で遊ぶ(1)</div>
+  <div class="js__button" id="concentration--CPUmode">CPUと遊ぶ(c)</div>
+</div>
+<div class="concentration__time">　</div>
