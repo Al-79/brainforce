@@ -44,7 +44,7 @@ document.addEventListener("turbolinks:load", function () {
       k = Math.floor(Math.random() * n);
     
       randomArr.push(indexArr[k]);
-      randomArr.splice(k, 1);
+      indexArr.splice(k, 1);
     };
     return randomArr;
   };
