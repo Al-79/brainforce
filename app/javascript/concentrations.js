@@ -34,6 +34,8 @@ document.addEventListener("turbolinks:load", function () {
   }
 
   var how_many_card = $('.card__cell').length
+  is1Pmode = false
+  isCPUmode = false
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
   concentration_shuffle()// いきなりシャッフル
@@ -68,8 +70,33 @@ document.addEventListener("turbolinks:load", function () {
       }
     })
 
+    // 1人で遊ぶ
+    $('#concentration--1Pmode').on('click', function() {
+      is1Pmode = true
+      $('#concentration--open').css('display','block')
+      $('#concentration--1Pmode').css('display','none')
+      $('#concentration--CPUmode').css('display','none')
+    })
+  
+    // CPUと遊ぶ
+    $('#concentration--CPUmode').on('click', function() {
+      isCPUmode = true
+      $('#concentration--shuffle').css('display','block')
+      $('#concentration--1Pmode').css('display','none')
+      $('#concentration--CPUmode').css('display','none')
+    })
+
+    // シャッフル
+    $('#concentration--shuffle').on('click', function() {
+      if (select_state == 0) {
+        concentration_shuffle()
+      } else {
+        $('.concentration__comment').text("カードが選択されています。シャッフルできません")
+      }
+    })
+
     // オープン
-    $('#concentration_open').on('click', function() {
+    $('#concentration--open').on('click', function() {
       select_state = 0
       // 裏が残っているやつだけ、表をオープンにする
       for (let step = 0; step < how_many_card; step++){
@@ -83,16 +110,6 @@ document.addEventListener("turbolinks:load", function () {
           $($('.card__cell')[step]).find('.concentration__head').css('display','none')
         }
       }, 3000);
-    })
-
-    // シャッフル
-    $('#concentration_shuffle').on('click', function() {
-      if (select_state == 0) {
-        concentration_shuffle()
-      } else {
-        $('.concentration__comment').text("カードが選択されています。シャッフルできません")
-      }
-    })
-  
+    })  
   })
 })
