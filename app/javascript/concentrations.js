@@ -36,6 +36,8 @@ document.addEventListener("turbolinks:load", function () {
   var how_many_card = $('.card__cell').length
   is1Pmode = false
   isCPUmode = false
+  isCPUturn = false
+  isOperable = true
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
   concentration_shuffle()// いきなりシャッフル
@@ -44,39 +46,56 @@ document.addEventListener("turbolinks:load", function () {
   $(function() {
     // カードを選択
     $('.concentration__tail').on('click', function() {
-      select_state ++
-      if (select_state == 1) {
-        check_card = $(this)
-        check_card.next().css('display','block')
-        $('.concentration__comment').text("カードが選択されています")
-      } else if (select_state == 2) {
-        $(this).next().css('display','block')
-        // ペアがあったとき
-        if (($(this).next().find('.concentration__id').attr('id') == check_card.next().find('.concentration__id').attr('id'))) {
-          select_state = 0
-          check_card.hide(1000)
-          $(this).hide(1000)
-          check_card.next().hide(1000)
-          $(this).next().hide(1000)
-          $('.concentration__comment').text("揃いました！")
-        } else{
-          setTimeout(()=>{
-            select_state = 0// Timeoutが終わるまでカードが選択できない状態になる
-            check_card.next().css('display','none')
-            $(this).next().css('display','none')
-          }, 1000);
-          $('.concentration__comment').text("残念！")
-          // CPUモードの場合、CPUの番になる
-          if (isCPUmode){
+      if (isCPUmode && !isOperable) {
+        $('.concentration__comment').text("CPUの番です。操作できません")
+      } else {
+        select_state ++
+        if (select_state == 1) {
+          check_card = $(this)
+          check_card.next().css('display','block')
+          $('.concentration__comment').text("カードが選択されています")
+        } else if (select_state == 2) {
+          $(this).next().css('display','block')
+          // ペアがあったとき
+          if (($(this).next().find('.concentration__id').attr('id') == check_card.next().find('.concentration__id').attr('id'))) {
+            select_state = 0
+            check_card.hide(1000)
+            $(this).hide(1000)
+            check_card.next().hide(1000)
+            $(this).next().hide(1000)
+            $('.concentration__comment').text("揃いました！")
+          } else{
             setTimeout(()=>{
-              $('.concentration__comment').text("CPUの番です")
+              select_state = 0// Timeoutが終わるまでカードが選択できない状態になる
+              check_card.next().css('display','none')
+              $(this).next().css('display','none')
             }, 1000);
-            setTimeout(()=>{
-              $($('.concentration__tail')[0]).trigger('click')
-            }, 2000);
-            setTimeout(()=>{
-              $($('.concentration__tail')[1]).trigger('click')
-            }, 3000);
+            $('.concentration__comment').text("残念！")
+            console.log(isCPUturn)
+            console.log(isOperable)
+            isCPUturn = !isCPUturn
+            isOperable = !isCPUturn
+            console.log(isCPUturn)
+            console.log(isOperable)
+            // CPUモードの場合、CPUの番になる
+            if (isCPUmode && isCPUturn){
+              setTimeout(()=>{
+                $('.concentration__comment').text("CPUの番です")
+              }, 1000);
+              setTimeout(()=>{
+                isOperable = true
+                $($('.concentration__tail')[0]).trigger('click')
+                isOperable = false
+              }, 2000);
+              setTimeout(()=>{
+                isOperable = true
+                $($('.concentration__tail')[1]).trigger('click')
+              }, 3000);
+            } else{
+              setTimeout(()=>{
+                $('.concentration__comment').text("カードを選択してください")
+              }, 1000);
+            }
           }
         }
       }
