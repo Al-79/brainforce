@@ -1,5 +1,21 @@
 document.addEventListener("turbolinks:load", function () {
 
+  // ランダム数列
+  function randArr(l){
+    // 0からnまでの数列と空の数列を作る
+    indexArr = Array.from({ length: l }).map((_, index) => index)
+    randomArr = []
+    // 空の数列に数を移し、ランダム数列にする
+    while (indexArr.length > 0) {
+      n = indexArr.length;
+      k = Math.floor(Math.random() * n);
+    
+      randomArr.push(indexArr[k]);
+      indexArr.splice(k, 1);
+    };
+    return randomArr;
+  };
+
   // 要素シャッフル
   function karuta_shuffle(){
     // 0からnまでの数列と空の数列を作る
@@ -32,22 +48,6 @@ document.addEventListener("turbolinks:load", function () {
       $($('.karuta__tail')[step]).css('display',tailArr[randomArr[step]])
     }
   }
-
-  // 読み札シャッフル用
-  function randArr(){
-    // 0からnまでの数列と空の数列を作る
-    indexArr = Array.from({ length: how_many_card }).map((_, index) => index)
-    randomArr = []
-    // 空の数列に数を移し、ランダム数列にする
-    while (indexArr.length > 0) {
-      n = indexArr.length;
-      k = Math.floor(Math.random() * n);
-    
-      randomArr.push(indexArr[k]);
-      indexArr.splice(k, 1);
-    };
-    return randomArr;
-  };
 
   // タイマー
   function count_up(){
@@ -103,7 +103,7 @@ document.addEventListener("turbolinks:load", function () {
       $('#karuta--start').css('display','none')
       $('#karuta--pass').css('display','block')
       $('#karuta--stop').css('display','block')
-      randomArr = randArr();
+      randomArr = randArr(how_many_card);
       if (!isCount) {
         isCount = true
         karuta_frame = 300

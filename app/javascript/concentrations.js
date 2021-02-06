@@ -1,5 +1,21 @@
 document.addEventListener("turbolinks:load", function () {
 
+  // ランダム数列
+  function randArr(l){
+    // 0からnまでの数列と空の数列を作る
+    indexArr = Array.from({ length: l }).map((_, index) => index)
+    randomArr = []
+    // 空の数列に数を移し、ランダム数列にする
+    while (indexArr.length > 0) {
+      n = indexArr.length;
+      k = Math.floor(Math.random() * n);
+    
+      randomArr.push(indexArr[k]);
+      indexArr.splice(k, 1);
+    };
+    return randomArr;
+  };
+
   // 要素シャッフル
   function concentration_shuffle(){
     // 0からnまでの数列と空の数列を作る
@@ -33,6 +49,32 @@ document.addEventListener("turbolinks:load", function () {
     }
   }
 
+  // CPUがカードを選ぶ
+  function CPUselect(){
+    n = $('.concentration__tail').filter(":visible").length
+    randomArr = randArr(n)
+    console.log(select_list.slice(-1)[0])
+    console.log(select_list)
+    if (n == 0) {
+      $('.concentration__comment').text("カードがなくなりました")
+    } else {
+      // カード選び戦略
+      setTimeout(()=>{
+        $('.concentration__comment').text("CPUの番です")
+      }, 1000);
+      setTimeout(()=>{
+        isOperable = true
+        $($('.concentration__tail').filter(":visible")[randomArr[0]]).trigger('click')
+        isOperable = false
+      }, 2000);
+      setTimeout(()=>{
+        isOperable = true
+        $($('.concentration__tail').filter(":visible")[randomArr[1]]).trigger('click')
+        !isOperable ?  CPUselect() : ''// 操作できない場合、再度CPUが行動する
+      }, 3000);
+    }
+  }
+
   var how_many_card = $('.card__cell').length
   is1Pmode = false
   isCPUmode = false
@@ -40,8 +82,9 @@ document.addEventListener("turbolinks:load", function () {
   isOperable = true
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
-  concentration_shuffle()// いきなりシャッフル
+  // concentration_shuffle()// いきなりシャッフル
   select_state = 0
+  select_list = []
 
   $(function() {
     // カードを選択
@@ -54,16 +97,18 @@ document.addEventListener("turbolinks:load", function () {
           check_card = $(this)
           check_card.next().css('display','block')
           $('.concentration__comment').text("カードが選択されています")
+          select_list.push($(this).next().find('.concentration__id').attr('id'))
         } else if (select_state == 2) {
           $(this).next().css('display','block')
           // ペアがあったとき
           if (($(this).next().find('.concentration__id').attr('id') == check_card.next().find('.concentration__id').attr('id'))) {
             select_state = 0
-            check_card.hide(1000)
-            $(this).hide(1000)
+            check_card.hide()
+            $(this).hide()
             check_card.next().hide(1000)
             $(this).next().hide(1000)
             $('.concentration__comment').text("揃いました！")
+            isCPUturn ? isOperable = false : ''// CPUが正解した場合、操作できない状態にする
           } else{
             setTimeout(()=>{
               select_state = 0// Timeoutが終わるまでカードが選択できない状態になる
@@ -71,26 +116,12 @@ document.addEventListener("turbolinks:load", function () {
               $(this).next().css('display','none')
             }, 1000);
             $('.concentration__comment').text("残念！")
-            console.log(isCPUturn)
-            console.log(isOperable)
+            isCPUturn ? console.log('CPUターン') : ''
             isCPUturn = !isCPUturn
             isOperable = !isCPUturn
-            console.log(isCPUturn)
-            console.log(isOperable)
             // CPUモードの場合、CPUの番になる
             if (isCPUmode && isCPUturn){
-              setTimeout(()=>{
-                $('.concentration__comment').text("CPUの番です")
-              }, 1000);
-              setTimeout(()=>{
-                isOperable = true
-                $($('.concentration__tail')[0]).trigger('click')
-                isOperable = false
-              }, 2000);
-              setTimeout(()=>{
-                isOperable = true
-                $($('.concentration__tail')[1]).trigger('click')
-              }, 3000);
+              CPUselect()
             } else{
               setTimeout(()=>{
                 $('.concentration__comment').text("カードを選択してください")
