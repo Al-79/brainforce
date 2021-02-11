@@ -82,7 +82,7 @@ document.addEventListener("turbolinks:load", function () {
   isOperable = true
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
-  // concentration_shuffle()// いきなりシャッフル
+  concentration_shuffle()// いきなりシャッフル
   select_state = 0
   select_list = []
 
