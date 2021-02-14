@@ -80,6 +80,8 @@ document.addEventListener("turbolinks:load", function () {
   isCPUmode = false
   isCPUturn = false
   isOperable = true
+  score1P = 0
+  scoreCPU = 0
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
   concentration_shuffle()// いきなりシャッフル
@@ -108,6 +110,16 @@ document.addEventListener("turbolinks:load", function () {
             check_card.next().hide(1000)
             $(this).next().hide(1000)
             $('.concentration__comment').text("揃いました！")
+            if (!isCPUmode) {
+              score1P += 10
+              $('.concentration__score').text("スコア：" + score1P)
+            } else if (!isCPUturn) {
+              score1P += 10
+              $('.concentration__score').text("あなたのスコア：" + score1P + "、CPUのスコア：" + scoreCPU)
+            } else {
+              scoreCPU += 10
+              $('.concentration__score').text("あなたのスコア：" + score1P + "、CPUのスコア：" + scoreCPU)
+            }
             isCPUturn ? isOperable = false : ''// CPUが正解した場合、操作できない状態にする
           } else{
             setTimeout(()=>{
@@ -135,6 +147,7 @@ document.addEventListener("turbolinks:load", function () {
     // 1人で遊ぶ
     $('#concentration--1Pmode').on('click', function() {
       is1Pmode = true
+      $('.concentration__score').text("あなたのスコア：" + score1P + "、CPUのスコア：" + scoreCPU)
       $('#concentration--open').css('display','block')
       $('#concentration--1Pmode').css('display','none')
       $('#concentration--CPUmode').css('display','none')
@@ -143,6 +156,7 @@ document.addEventListener("turbolinks:load", function () {
     // CPUと遊ぶ
     $('#concentration--CPUmode').on('click', function() {
       isCPUmode = true
+      $('.concentration__score').text("あなたのスコア：" + score1P + "、CPUのスコア：" + scoreCPU)
       $('#concentration--shuffle').css('display','block')
       $('#concentration--1Pmode').css('display','none')
       $('#concentration--CPUmode').css('display','none')
