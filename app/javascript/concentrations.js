@@ -88,12 +88,15 @@ document.addEventListener("turbolinks:load", function () {
   concentration_shuffle()// いきなりシャッフル
   select_state = 0
   select_list = []
+  
 
   $(function() {
     // カードを選択
     $('.concentration__tail').on('click', function() {
       if (isCPUmode && !isOperable) {
         $('.concentration__comment').text("CPUの番です。操作できません")
+      } else if (!is1Pmode && !isCPUmode) {
+        alert("モードを選択してください")
       } else {
         select_state ++
         if (select_state == 1) {
