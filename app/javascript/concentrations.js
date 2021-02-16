@@ -57,6 +57,7 @@ document.addEventListener("turbolinks:load", function () {
     console.log(select_list)
     if (n == 0) {
       $('.concentration__comment').text("カードがなくなりました")
+      $('#concentration--regist-score').css('display','block')
     } else {
       // カード選び戦略
       setTimeout(()=>{
@@ -83,7 +84,7 @@ document.addEventListener("turbolinks:load", function () {
   score1P = 0
   scoreCPU = 0
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
-  $('.concentration__tail').show()// ページ切り替えなどで開いたままのものを閉じる
+  $('.concentration__tail').show()// ページ切り替えなどで消えたままのものを戻す
   concentration_shuffle()// いきなりシャッフル
   select_state = 0
   select_list = []
@@ -110,6 +111,10 @@ document.addEventListener("turbolinks:load", function () {
             check_card.next().hide(1000)
             $(this).next().hide(1000)
             $('.concentration__comment').text("揃いました！")
+            if ($('.concentration__tail').filter(":visible").length == 0) {
+              $('.concentration__comment').text("カードがなくなりました")
+              $('#concentration--regist-score').css('display','block')
+            }
             if (!isCPUmode) {
               score1P += 10
               $('.concentration__score').text("スコア：" + score1P)
@@ -151,6 +156,7 @@ document.addEventListener("turbolinks:load", function () {
       $('#concentration--open').css('display','block')
       $('#concentration--1Pmode').css('display','none')
       $('#concentration--CPUmode').css('display','none')
+      $('#concentration--regist-score').css('display','none')
     })
   
     // CPUと遊ぶ
@@ -160,6 +166,7 @@ document.addEventListener("turbolinks:load", function () {
       $('#concentration--shuffle').css('display','block')
       $('#concentration--1Pmode').css('display','none')
       $('#concentration--CPUmode').css('display','none')
+      $('#concentration--regist-score').css('display','none')
     })
 
     // シャッフル

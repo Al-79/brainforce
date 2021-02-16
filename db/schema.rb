@@ -47,6 +47,7 @@ ActiveRecord::Schema.define(version: 2021_02_12_161403) do
 
   create_table "scores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "value"
+    t.string "game"
     t.bigint "book_id"
     t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
