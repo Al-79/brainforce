@@ -85,7 +85,7 @@ document.addEventListener("turbolinks:load", function () {
   scoreCPU = 0
   $('.concentration__head').hide()// ページ切り替えなどで開いたままのものを閉じる
   $('.concentration__tail').show()// ページ切り替えなどで消えたままのものを戻す
-  concentration_shuffle()// いきなりシャッフル
+  // concentration_shuffle()// いきなりシャッフル
   select_state = 0
   select_list = []
   
@@ -95,8 +95,8 @@ document.addEventListener("turbolinks:load", function () {
     $('.concentration__tail').on('click', function() {
       if (isCPUmode && !isOperable) {
         $('.concentration__comment').text("CPUの番です。操作できません")
-      } else if (!is1Pmode && !isCPUmode) {
-        alert("モードを選択してください")
+      // } else if (!is1Pmode && !isCPUmode) {
+      //   alert("モードを選択してください")
       } else {
         select_state ++
         if (select_state == 1) {

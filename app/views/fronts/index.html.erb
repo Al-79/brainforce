@@ -3,5 +3,52 @@
   <%= current_user.nickname %> さん、brainforceへようこそ
 <% else %>
   brainforceは脳力を鍛えるためのアプリケーションです。
-  ログインして、問題集を解いてみましょう
+  ログインして、問題集で遊びましょう<br />
+  単語帳(クリックすると表裏が入れ替わります)<br />
+  <div class="wordbook--top">
+    <% @book3.questions.each do |q| %>
+      <div class="card__object">
+        <div class="card__cell">
+          <div class="wordbook__tail">
+            <div class="wordbook__tail--content">
+              <div class="wordbook__text", style="color: <%= q.cont_color %>; font-size: <%= @book3.font_size %>px"><%= q.content %></div>
+            </div>
+          </div>
+          <div class="wordbook__head">
+            <div class="wordbook__head--content">
+              <div class="wordbook__text", style="color: <%= q.ans_color %>; font-size: <%= @book3.font_size %>px"><%= q.answer %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  神経衰弱<br />
+  <div class="concentration__top">
+  <% @book1.questions.each do |q| %>
+    <div class="card__object">
+      <div class="card__cell">
+        <div class="concentration__tail"></div>
+        <div class="concentration__head">
+          <div class="concentration__head--content">
+            <div class="concentration__text", style="color: <%= q.cont_color %>; font-size: <%= @book1.font_size %>px"><%= q.content %></div>
+          </div>
+          <div class="concentration__id" id="<%= q.id %>"></div>
+        </div>
+      </div>
+    </div>
+    <div class="card__object">
+      <div class="card__cell">
+        <div class="concentration__tail"></div>
+        <div class="concentration__head">
+          <div class="concentration__head--content">
+            <div class="concentration__text", style="color: <%= q.ans_color %>; font-size: <%= @book1.font_size %>px"><%= q.answer %></div>
+          </div>
+          <div class="concentration__id" id="<%= q.id %>"></div>
+        </div>
+      </div>
+    </div>
+  <% end %>
 <% end %>
+
+</div>
